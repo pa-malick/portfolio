@@ -1365,6 +1365,8 @@
             <div class="contact-form fade-up">
                 <h3>Envoyer un message</h3>
                 <form action="https://formspree.io/f/meewvqzd" method="POST">
+                    <!-- Redirige vers le portfolio après envoi -->
+                    <input type="hidden" name="_next" value="https://pa-malick.github.io/portfolio/?msg=sent">
                     <div class="form-row">
                         <label for="fname">Nom</label>
                         <input type="text" id="fname" name="name" placeholder="Votre nom" required>
@@ -1594,24 +1596,6 @@ ScrollTrigger.create({
     }
 });
 
-/* ============================================================
-   4. FORMULAIRE CONTACT — feedback visuel (statique)
-   → Pour un vrai envoi, connecter à Formspree ou EmailJS
-============================================================ */
-function sendMessage(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
-    const original = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
-    btn.style.background = '#16a34a';
-    btn.disabled = true;
-    setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.background = '';
-        btn.disabled = false;
-        e.target.reset();
-    }, 3200);
-}
 </script>
 
 </body>
