@@ -532,10 +532,15 @@
             padding: 0.28rem 0.7rem;
             border-radius: 100px;
         }
-        .p-badge.done  { background: #dcfce7; color: #16a34a; }
-        .p-badge.wip   { background: #fef9c3; color: #ca8a04; }
-        .p-badge.soon  { background: var(--bg-light); color: var(--text-light); border: 1px solid var(--border); }
-        .p-badge.acad  { background: #f3e8ff; color: #7c3aed; border: 1px solid #e9d5ff; }
+        /* Badge = domaine du projet (une seule dimension, uniforme sur toutes les cartes) */
+        .p-badge.ml   { background: #dbeafe; color: #2563eb; }  /* Machine Learning */
+        .p-badge.dl   { background: #e0e7ff; color: #4f46e5; }  /* Deep Learning */
+        .p-badge.cv   { background: #f3e8ff; color: #7c3aed; }  /* Computer Vision */
+        .p-badge.nlp  { background: #ccfbf1; color: #0d9488; }  /* NLP */
+        .p-badge.llm  { background: #fce7f3; color: #db2777; }  /* LLM · RAG */
+        .p-badge.de   { background: #fef3c7; color: #d97706; }  /* Data Engineering */
+        .p-badge.web  { background: #dcfce7; color: #16a34a; }  /* Web / Full-stack */
+        .p-badge.erp  { background: #f1f5f9; color: #475569; }  /* ERP */
 
         .project-body { padding: 0 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
         .p-title {
@@ -1107,13 +1112,13 @@
             <div class="project-card fade-up">
                 <div class="project-top">
                     <span class="p-icon">🏦</span>
-                    <span class="p-badge done">Déployé</span>
+                    <span class="p-badge ml">Machine Learning</span>
                 </div>
                 <div class="project-body">
-                    <h3 class="p-title">Détection de Fraude Bancaire par Machine Learning</h3>
+                    <h3 class="p-title">Détection de Fraude Bancaire</h3>
                     <p class="p-desc">
-                        Comparaison de 5 algorithmes ML pour détecter les fraudes bancaires,
-                        avec gestion du déséquilibre des classes et déploiement Flask + Docker.
+                        5 algorithmes ML comparés pour détecter les fraudes, gestion du
+                        déséquilibre des classes et déploiement Flask + Docker.
                     </p>
                     <div class="p-tech">
                         <span>Python</span><span>Scikit-learn</span><span>Flask</span>
@@ -1130,13 +1135,13 @@
             <div class="project-card fade-up">
                 <div class="project-top">
                     <span class="p-icon">🔬</span>
-                    <span class="p-badge done">Déployé</span>
+                    <span class="p-badge dl">Deep Learning</span>
                 </div>
                 <div class="project-body">
-                    <h3 class="p-title">Détection du Paludisme par Deep Learning</h3>
+                    <h3 class="p-title">Détection du Paludisme</h3>
                     <p class="p-desc">
-                        CNN entraîné sur 27 558 images de cellules sanguines pour détecter le
-                        Plasmodium, avec interface web de prédiction en temps réel.
+                        CNN sur 27 558 images de cellules sanguines pour détecter le
+                        Plasmodium, avec prédiction web en temps réel.
                     </p>
                     <div class="p-tech">
                         <span>Python</span><span>TensorFlow/Keras</span><span>CNN</span>
@@ -1153,13 +1158,13 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">🌾</span>
-                        <span class="p-badge done">Déployé</span>
+                        <span class="p-badge ml">Machine Learning</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">AgroPredict SN · Prédiction agricole par ML</h3>
+                        <h3 class="p-title">AgroPredict SN</h3>
                         <p class="p-desc">
-                            Prédiction des rendements agricoles combinant simulation physique et ML,
-                            pour aider les agriculteurs sénégalais face aux aléas climatiques.
+                            Prédiction des rendements agricoles combinant simulation physique
+                            et ML, face aux aléas climatiques.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>Machine Learning</span><span>Streamlit</span>
@@ -1176,13 +1181,13 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">🇸🇳</span>
-                        <span class="p-badge acad">Master 2 · UADB</span>
+                        <span class="p-badge de">Data Engineering</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">Teranga-SN · Intelligence touristique &amp; économie numérique</h3>
+                        <h3 class="p-title">Teranga-SN · Tourisme Big Data</h3>
                         <p class="p-desc">
-                            Plateforme Big Data temps réel pour le tourisme sénégalais. Projet Master 2
-                            réalisé avec <strong>TINE Abdousalam</strong>.
+                            Plateforme Big Data temps réel pour le tourisme sénégalais.
+                            Projet Master 2 avec <strong>TINE Abdousalam</strong>.
                         </p>
                         <div class="p-tech">
                             <span>Flask</span><span>Airflow</span><span>Kafka</span>
@@ -1199,17 +1204,17 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">🏠</span>
-                        <span class="p-badge done">Déployé</span>
+                        <span class="p-badge web">Web · Full-stack</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">ImmoHab · Gestion locative pour le marché sénégalais</h3>
+                        <h3 class="p-title">ImmoHab · Gestion locative</h3>
                         <p class="p-desc">
-                            Plateforme de gestion locative full-stack avec rôles, authentification JWT
-                            et CI/CD. 34 tests unitaires, déploiement Docker + Railway.
+                            Gestion locative full-stack : rôles, auth JWT, CI/CD et 34 tests
+                            unitaires. Déploiement Docker + Railway.
                         </p>
                         <div class="p-tech">
-                            <span>Next.js 16</span><span>TypeScript</span><span>Prisma ORM</span>
-                            <span>PostgreSQL</span><span>Tailwind CSS 4</span><span>Docker</span><span>Railway</span>
+                            <span>Next.js 16</span><span>TypeScript</span><span>Prisma</span>
+                            <span>PostgreSQL</span><span>Docker</span>
                         </div>
                         <div class="p-links">
                             <a href="https://immohab-production.up.railway.app" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
@@ -1222,13 +1227,13 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">🚗</span>
-                        <span class="p-badge done">Déployé</span>
+                        <span class="p-badge web">Web · Front-end</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">Bambouk Motors · Vitrine automobile au Sénégal</h3>
+                        <h3 class="p-title">Bambouk Motors · Vitrine auto</h3>
                         <p class="p-desc">
-                            Site vitrine pour un concessionnaire automobile sénégalais : catalogue,
-                            import et vente de véhicules neufs et d'occasion.
+                            Site vitrine pour un concessionnaire sénégalais : catalogue
+                            et vente de véhicules neufs et d'occasion.
                         </p>
                         <div class="p-tech">
                             <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Netlify</span>
@@ -1244,13 +1249,13 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">💬</span>
-                        <span class="p-badge done">Déployé</span>
+                        <span class="p-badge nlp">NLP</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">SentimentAI · Analyse de sentiment NLP sur IMDB</h3>
+                        <h3 class="p-title">SentimentAI · Sentiment IMDB</h3>
                         <p class="p-desc">
-                            Analyse de sentiment sur 50 000 critiques IMDB comparant TF-IDF, Forêt
-                            Aléatoire et DistilBERT fine-tuné (89,2 % d'accuracy).
+                            50 000 critiques IMDB : TF-IDF, Forêt Aléatoire et DistilBERT
+                            fine-tuné comparés (89,2 % d'accuracy).
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>NLP</span><span>TF-IDF</span>
@@ -1267,13 +1272,13 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">🤖</span>
-                        <span class="p-badge done">Déployé</span>
+                        <span class="p-badge llm">LLM · RAG</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">SenegalGPT · Assistant IA multilingue sur le Sénégal</h3>
+                        <h3 class="p-title">SenegalGPT · Assistant IA</h3>
                         <p class="p-desc">
-                            Assistant conversationnel en français, anglais et wolof sur les documents
-                            officiels du Sénégal : Vision 2050, PSE, rapports ANSD, budget, gouvernance.
+                            Assistant conversationnel FR / EN / wolof sur les documents
+                            officiels du Sénégal (Vision 2050, PSE, ANSD).
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>LLM</span><span>RAG</span>
@@ -1290,13 +1295,13 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">💊</span>
-                        <span class="p-badge done">Déployé</span>
+                        <span class="p-badge erp">ERP · Odoo</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">Pharmacie Management · Module ERP Odoo 18</h3>
+                        <h3 class="p-title">Pharmacie · Module ERP Odoo</h3>
                         <p class="p-desc">
-                            Module ERP pour la gestion d'une officine pharmaceutique sénégalaise : stocks
-                            FEFO, ventes, ordonnances et réapprovisionnement.
+                            Module ERP pour une officine pharmaceutique : stocks FEFO,
+                            ventes, ordonnances et réapprovisionnement.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>Odoo 18</span><span>PostgreSQL</span><span>ERP</span>
@@ -1311,13 +1316,13 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">🛸</span>
-                        <span class="p-badge acad">Computer Vision</span>
+                        <span class="p-badge cv">Computer Vision</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">Détection de drones militaires · YOLOv11</h3>
+                        <h3 class="p-title">Détection de drones · YOLOv11</h3>
                         <p class="p-desc">
-                            Détection d'objets de bout en bout (annotation Roboflow → entraînement →
-                            export ONNX). Fuite de données détectée et corrigée. mAP@50 0,86 · Precision 0,93.
+                            Détection d'objets de bout en bout (Roboflow → entraînement → ONNX).
+                            Fuite de données corrigée. mAP@50 0,86 · Precision 0,93.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>YOLOv11</span><span>Ultralytics</span>
@@ -1334,13 +1339,13 @@
                 <div class="project-card fade-up">
                     <div class="project-top">
                         <span class="p-icon">🔬</span>
-                        <span class="p-badge acad">Computer Vision</span>
+                        <span class="p-badge cv">Computer Vision</span>
                     </div>
                     <div class="project-body">
-                        <h3 class="p-title">Cancer du sein · Vision Transformer</h3>
+                        <h3 class="p-title">Cancer du sein · ViT</h3>
                         <p class="p-desc">
-                            Classification d'images histopathologiques (bénin / cancer) par fine-tuning d'un
-                            ViT de Google, comparé à un ResNet50. Déséquilibre géré par perte pondérée.
+                            Classification d'images histopathologiques (bénin / cancer) :
+                            ViT de Google fine-tuné vs ResNet50, déséquilibre géré par perte pondérée.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>ViT</span><span>PyTorch</span>
