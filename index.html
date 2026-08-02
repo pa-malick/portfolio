@@ -489,11 +489,79 @@
             color: var(--accent);
             border-color: rgba(37,99,235,0.2);
         }
+        /* Tags cliquables : renvoient vers les projets concernés */
+        .tag[data-proj] { cursor: pointer; }
+        .tag[data-proj]::after {
+            content: '\f0da';               /* chevron droit (Font Awesome) */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.62rem;
+            margin-left: 0.4rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .tag[data-proj]:hover, .tag[data-proj].active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        .tag[data-proj]:hover::after, .tag[data-proj].active::after { opacity: 0.9; }
+        .tag[data-proj]:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
 
         /* ============================
            PROJECTS
         ============================ */
         #projects { background: var(--bg); }
+
+        /* Barre de filtre par compétence */
+        .filter-bar {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            background: var(--accent-soft);
+            border: 1px solid rgba(37,99,235,0.2);
+            border-radius: var(--radius);
+            padding: 0.8rem 1.1rem;
+            margin-bottom: 1.4rem;
+        }
+        .filter-bar.on { display: flex; }
+        .filter-txt { font-size: 0.86rem; color: var(--text-mid); }
+        .filter-txt strong { color: var(--accent); }
+        .filter-count {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-size: 0.76rem;
+            color: var(--text-mid);
+        }
+        .filter-reset {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-dark);
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.4rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .filter-reset:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* Cartes masquées / mises en avant par le filtre */
+        .project-card.filtered-out { display: none; }
+        .project-card.filtered-in {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
 
         .projects-grid {
             display: grid;
@@ -1019,16 +1087,16 @@
                 <div class="skill-icon">🤖</div>
                 <p class="skill-cat">Data &amp; Intelligence Artificielle</p>
                 <div class="tags">
-                    <span class="tag hi">Machine Learning</span>
-                    <span class="tag hi">Deep Learning</span>
-                    <span class="tag">Scikit-learn</span>
-                    <span class="tag">TensorFlow / Keras</span>
-                    <span class="tag">CNN</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">NumPy</span>
-                    <span class="tag">Matplotlib</span>
-                    <span class="tag">Seaborn</span>
-                    <span class="tag">SMOTE</span>
+                    <span class="tag hi" data-proj="fraud,agro,sentiment,opportunity">Machine Learning</span>
+                    <span class="tag hi" data-proj="malaria,sentiment,senegalgpt,drones,cancer">Deep Learning</span>
+                    <span class="tag" data-proj="fraud,sentiment">Scikit-learn</span>
+                    <span class="tag" data-proj="malaria">TensorFlow / Keras</span>
+                    <span class="tag" data-proj="malaria,drones,cancer">CNN</span>
+                    <span class="tag" data-proj="fraud,agro,sentiment,opportunity">Pandas</span>
+                    <span class="tag" data-proj="fraud,malaria,agro,drones,cancer">NumPy</span>
+                    <span class="tag" data-proj="fraud,agro,opportunity">Matplotlib</span>
+                    <span class="tag" data-proj="fraud,agro">Seaborn</span>
+                    <span class="tag" data-proj="fraud">SMOTE</span>
                 </div>
             </div>
 
@@ -1036,17 +1104,21 @@
                 <div class="skill-icon">⚙️</div>
                 <p class="skill-cat">Développement &amp; Outils</p>
                 <div class="tags">
-                    <span class="tag hi">Python</span>
+                    <span class="tag hi" data-proj="fraud,malaria,agro,teranga,sentiment,senegalgpt,pharmacie,drones,cancer,opportunity">Python</span>
                     <span class="tag">C++</span>
-                    <span class="tag">Flask</span>
+                    <span class="tag" data-proj="fraud,malaria,teranga,sentiment">Flask</span>
+                    <span class="tag" data-proj="immohab">Next.js / React</span>
+                    <span class="tag" data-proj="drones,cancer,opportunity">Vue</span>
+                    <span class="tag" data-proj="immohab">TypeScript</span>
+                    <span class="tag" data-proj="bambouk">HTML / CSS / JS</span>
                     <span class="tag">Git / GitHub</span>
-                    <span class="tag">Docker</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">Bases de données</span>
-                    <span class="tag">REST API</span>
-                    <span class="tag hi">DevOps</span>
-                    <span class="tag hi">Software Engineering</span>
-                    <span class="tag">Streamlit</span>
+                    <span class="tag" data-proj="fraud,malaria,immohab,opportunity">Docker</span>
+                    <span class="tag" data-proj="teranga,immohab,pharmacie">SQL</span>
+                    <span class="tag" data-proj="teranga,immohab,pharmacie">Bases de données</span>
+                    <span class="tag" data-proj="immohab,opportunity">REST API</span>
+                    <span class="tag hi" data-proj="fraud,agro,immohab,opportunity">DevOps</span>
+                    <span class="tag hi" data-proj="immohab,pharmacie,opportunity">Software Engineering</span>
+                    <span class="tag" data-proj="agro,opportunity">Streamlit</span>
                 </div>
             </div>
 
@@ -1054,13 +1126,13 @@
                 <div class="skill-icon">🔬</div>
                 <p class="skill-cat">Fondamentaux scientifiques</p>
                 <div class="tags">
-                    <span class="tag hi">Maths avancées</span>
-                    <span class="tag">Statistiques &amp; Probabilités</span>
-                    <span class="tag">Algèbre linéaire</span>
-                    <span class="tag">Équations différentielles</span>
-                    <span class="tag">Physique avancée</span>
-                    <span class="tag">Modélisation numérique</span>
-                    <span class="tag">Simulation</span>
+                    <span class="tag hi" data-proj="agro,fraud,cancer">Maths avancées</span>
+                    <span class="tag" data-proj="fraud,opportunity">Statistiques &amp; Probabilités</span>
+                    <span class="tag" data-proj="cancer,sentiment">Algèbre linéaire</span>
+                    <span class="tag" data-proj="agro">Équations différentielles</span>
+                    <span class="tag" data-proj="agro">Physique avancée</span>
+                    <span class="tag" data-proj="agro">Modélisation numérique</span>
+                    <span class="tag" data-proj="agro">Simulation</span>
                     <span class="tag">IoT</span>
                 </div>
             </div>
@@ -1069,14 +1141,14 @@
                 <div class="skill-icon">🗄️</div>
                 <p class="skill-cat">Big Data &amp; Data Engineering</p>
                 <div class="tags">
-                    <span class="tag hi">Apache Kafka</span>
-                    <span class="tag hi">Spark Streaming</span>
-                    <span class="tag">Apache Hive</span>
-                    <span class="tag">HBase</span>
-                    <span class="tag">Apache NiFi</span>
-                    <span class="tag">MLflow</span>
-                    <span class="tag">Airflow</span>
-                    <span class="tag">Streamlit</span>
+                    <span class="tag hi" data-proj="teranga">Apache Kafka</span>
+                    <span class="tag hi" data-proj="teranga">Spark Streaming</span>
+                    <span class="tag" data-proj="teranga">Apache Hive</span>
+                    <span class="tag" data-proj="teranga">HBase</span>
+                    <span class="tag" data-proj="teranga">Apache NiFi</span>
+                    <span class="tag" data-proj="teranga">MLflow</span>
+                    <span class="tag" data-proj="teranga,opportunity">Airflow</span>
+                    <span class="tag" data-proj="agro,opportunity">Streamlit</span>
                 </div>
             </div>
 
@@ -1106,10 +1178,21 @@
         <h2 class="sec-title fade-up">Projets</h2>
         <p class="sec-sub fade-up">Des pipelines complets, du nettoyage des données au déploiement. Pas juste des notebooks.</p>
 
+        <!-- Barre de filtre : activée par un clic sur un tag de la section Compétences -->
+        <div class="filter-bar" id="filterBar" role="status" aria-live="polite">
+            <span class="filter-txt">
+                Compétence&nbsp;: <strong id="filterName"></strong>
+                <span class="filter-count" id="filterCount"></span>
+            </span>
+            <button type="button" class="filter-reset" onclick="clearProjectFilter()">
+                <i class="fas fa-times"></i> Tout afficher
+            </button>
+        </div>
+
         <div class="projects-grid">
 
             <!-- Projet 1 -->
-            <div class="project-card fade-up">
+            <div class="project-card fade-up" id="p-fraud" data-proj="fraud">
                 <div class="project-top">
                     <span class="p-icon">🏦</span>
                     <span class="p-badge ml">Machine Learning</span>
@@ -1132,7 +1215,7 @@
             </div>
 
             <!-- Projet 2 -->
-            <div class="project-card fade-up">
+            <div class="project-card fade-up" id="p-malaria" data-proj="malaria">
                 <div class="project-top">
                     <span class="p-icon">🔬</span>
                     <span class="p-badge dl">Deep Learning</span>
@@ -1155,7 +1238,7 @@
             </div>
 
             <!-- Projet 3 : AgroPredict SN -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-agro" data-proj="agro">
                     <div class="project-top">
                         <span class="p-icon">🌾</span>
                         <span class="p-badge ml">Machine Learning</span>
@@ -1178,7 +1261,7 @@
                 </div>
 
             <!-- Projet 4 : Teranga-SN -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-teranga" data-proj="teranga">
                     <div class="project-top">
                         <span class="p-icon">🇸🇳</span>
                         <span class="p-badge de">Data Engineering</span>
@@ -1201,7 +1284,7 @@
                 </div>
 
             <!-- Projet 5 : ImmoHab -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-immohab" data-proj="immohab">
                     <div class="project-top">
                         <span class="p-icon">🏠</span>
                         <span class="p-badge web">Web · Full-stack</span>
@@ -1224,7 +1307,7 @@
                 </div>
 
             <!-- Projet 6 : Bambouk Motors -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-bambouk" data-proj="bambouk">
                     <div class="project-top">
                         <span class="p-icon">🚗</span>
                         <span class="p-badge web">Web · Front-end</span>
@@ -1246,7 +1329,7 @@
                 </div>
 
             <!-- Projet 7 : SentimentAI -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-sentiment" data-proj="sentiment">
                     <div class="project-top">
                         <span class="p-icon">💬</span>
                         <span class="p-badge nlp">NLP</span>
@@ -1269,7 +1352,7 @@
                 </div>
 
             <!-- Projet 8 : SenegalGPT -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-senegalgpt" data-proj="senegalgpt">
                     <div class="project-top">
                         <span class="p-icon">🤖</span>
                         <span class="p-badge llm">LLM · RAG</span>
@@ -1292,7 +1375,7 @@
                 </div>
 
             <!-- Projet 9 : Pharmacie_management -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-pharmacie" data-proj="pharmacie">
                     <div class="project-top">
                         <span class="p-icon">💊</span>
                         <span class="p-badge erp">ERP · Odoo</span>
@@ -1313,7 +1396,7 @@
                 </div>
 
             <!-- Projet 10 : Détection de drones YOLOv11 -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-drones" data-proj="drones">
                     <div class="project-top">
                         <span class="p-icon">🛸</span>
                         <span class="p-badge cv">Computer Vision</span>
@@ -1336,7 +1419,7 @@
                 </div>
 
             <!-- Projet 11 : Cancer du sein ViT -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-cancer" data-proj="cancer">
                     <div class="project-top">
                         <span class="p-icon">🔬</span>
                         <span class="p-badge cv">Computer Vision</span>
@@ -1359,7 +1442,7 @@
                 </div>
 
             <!-- Projet 12 : OpportunitySN -->
-                <div class="project-card fade-up">
+                <div class="project-card fade-up" id="p-opportunity" data-proj="opportunity">
                     <div class="project-top">
                         <span class="p-icon">🎯</span>
                         <span class="p-badge de">Data Engineering</span>
@@ -1739,6 +1822,75 @@ gsap.utils.toArray('.tl-item').forEach((item, i) => {
         }
     );
 });
+
+/* ============================================================
+   3 bis. Filtre Compétences → Projets
+   Un clic sur un tag de la section Compétences n'affiche que les
+   projets qui utilisent réellement cette compétence.
+============================================================ */
+(function () {
+    const bar        = document.getElementById('filterBar');
+    const nameEl     = document.getElementById('filterName');
+    const countEl    = document.getElementById('filterCount');
+    const cards      = Array.from(document.querySelectorAll('.project-card[data-proj]'));
+    const skillTags  = Array.from(document.querySelectorAll('.tag[data-proj]'));
+    const navH       = () => (document.getElementById('navbar')?.offsetHeight || 70);
+
+    // Nombre de projets par tag, affiché au survol
+    skillTags.forEach(tag => {
+        const n = tag.dataset.proj.split(',').length;
+        tag.setAttribute('role', 'button');
+        tag.setAttribute('tabindex', '0');
+        tag.setAttribute('title', n + (n > 1 ? ' projets concernés' : ' projet concerné'));
+    });
+
+    function applyFilter(tag) {
+        const ids = tag.dataset.proj.split(',').map(s => s.trim());
+        let shown = 0;
+
+        cards.forEach(card => {
+            const match = ids.includes(card.dataset.proj);
+            card.classList.toggle('filtered-out', !match);
+            card.classList.toggle('filtered-in', match);
+            if (match) {
+                shown++;
+                // Neutralise l'état initial de l'animation GSAP (opacity 0)
+                gsap.set(card, { opacity: 1, y: 0 });
+            }
+        });
+
+        skillTags.forEach(t => t.classList.toggle('active', t === tag));
+
+        nameEl.textContent  = tag.textContent.trim();
+        countEl.textContent = '· ' + shown + (shown > 1 ? ' projets' : ' projet');
+        bar.classList.add('on');
+
+        ScrollTrigger.refresh();
+
+        // La forme à 2 arguments respecte le `scroll-behavior: smooth` du CSS
+        const top = document.getElementById('projects').getBoundingClientRect().top
+                  + window.pageYOffset - navH() - 10;
+        window.scrollTo(0, Math.max(top, 0));
+    }
+
+    window.clearProjectFilter = function () {
+        cards.forEach(c => c.classList.remove('filtered-out', 'filtered-in'));
+        skillTags.forEach(t => t.classList.remove('active'));
+        bar.classList.remove('on');
+        ScrollTrigger.refresh();
+    };
+
+    skillTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            // Re-cliquer sur le tag actif enlève le filtre
+            if (tag.classList.contains('active')) clearProjectFilter();
+            else applyFilter(tag);
+        });
+        tag.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tag.click(); }
+        });
+    });
+})();
 
 // Barres de langues : se remplissent au scroll
 ScrollTrigger.create({
