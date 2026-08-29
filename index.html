@@ -6,7 +6,7 @@
     <title>Papa Malick NDIAYE | Data Scientist & AI Engineer</title>
     <meta name="description" content="Portfolio de Papa Malick NDIAYE, Data Scientist & AI Engineer basé à Dakar, Sénégal.">
 
-    <!-- Open Graph — aperçu sur LinkedIn, WhatsApp, Twitter -->
+    <!-- Open Graph : aperçu sur LinkedIn, WhatsApp, Twitter -->
     <meta property="og:title" content="Papa Malick NDIAYE | Data Scientist & AI Engineer">
     <meta property="og:description" content="Étudiant M2 Data Science & Génie Logiciel à l'UADB. Projets ML, Deep Learning, Big Data déployés en production. Basé à Dakar, Sénégal.">
     <meta property="og:type" content="website">
@@ -17,7 +17,7 @@
     <meta property="og:locale" content="fr_SN">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Papa Malick NDIAYE | Data Scientist & AI Engineer">
-    <meta name="twitter:description" content="Étudiant M2 Data Science à l'UADB. ML, Deep Learning, Big Data — projets déployés en production.">
+    <meta name="twitter:description" content="Étudiant M2 Data Science à l'UADB. ML, Deep Learning, Big Data. Projets déployés en production.">
     <meta name="twitter:image" content="https://pa-malick.github.io/portfolio/photo.png">
 
     <!-- Google Fonts -->
@@ -607,6 +607,7 @@
         .p-badge.nlp  { background: #ccfbf1; color: #0d9488; }  /* NLP */
         .p-badge.llm  { background: #fce7f3; color: #db2777; }  /* LLM · RAG */
         .p-badge.de   { background: #fef3c7; color: #d97706; }  /* Data Engineering */
+        .p-badge.bi   { background: #cffafe; color: #0891b2; }  /* Business Intelligence */
         .p-badge.web  { background: #dcfce7; color: #16a34a; }  /* Web / Full-stack */
         .p-badge.erp  { background: #f1f5f9; color: #475569; }  /* ERP */
 
@@ -651,7 +652,7 @@
             padding: 0.22rem 0.6rem;
             border-radius: 5px;
         }
-        .p-links { display: flex; gap: 0.65rem; }
+        .p-links { display: flex; flex-wrap: wrap; gap: 0.65rem; }
         .p-link {
             display: inline-flex;
             align-items: center;
@@ -674,6 +675,147 @@
             border: 1px solid var(--border);
         }
         .p-link.gh:hover { background: var(--border); }
+        .p-link.doc {
+            background: #fff;
+            color: var(--text-dark);
+            border: 1px solid var(--border);
+        }
+        .p-link.doc:hover { background: var(--bg-light); }
+        .p-link.more {
+            background: var(--accent-soft);
+            color: var(--accent-dark);
+            border: 1px solid #dbeafe;
+            cursor: pointer;
+            font-family: var(--font-b);
+        }
+        .p-link.more:hover { background: #dbeafe; }
+
+        /* ---- Fiche projet détaillée (problème → valeur → résultats) ---- */
+        .story-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 24, 39, 0.55);
+            backdrop-filter: blur(3px);
+            z-index: 2000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 5vh 1rem;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .story-overlay.open { opacity: 1; pointer-events: auto; }
+        .story-modal {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 720px;
+            padding: 2rem 2rem 1.75rem;
+            position: relative;
+            transform: translateY(18px);
+            transition: transform 0.25s ease;
+        }
+        .story-overlay.open .story-modal { transform: translateY(0); }
+        .story-close {
+            position: absolute;
+            top: 0.9rem;
+            right: 0.9rem;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--bg-light);
+            color: var(--text-mid);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .story-close:hover { background: var(--border); color: var(--text-dark); }
+        .story-top { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; }
+        .story-top .p-icon { font-size: 1.6rem; }
+        .story-title {
+            font-family: var(--font-h);
+            font-size: 1.42rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.25;
+            margin-bottom: 0.35rem;
+            padding-right: 2.5rem;
+        }
+        .story-who {
+            font-size: 0.83rem;
+            color: var(--text-mid);
+            margin-bottom: 1.4rem;
+        }
+        .story-who b { color: var(--text-dark); font-weight: 600; }
+        .story-block { margin-bottom: 1.3rem; }
+        .story-block h4 {
+            font-family: var(--font-h);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.45rem;
+        }
+        .story-block p {
+            font-size: 0.93rem;
+            line-height: 1.7;
+            color: var(--text-mid);
+        }
+        .story-block ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .story-block li {
+            font-size: 0.93rem;
+            line-height: 1.55;
+            color: var(--text-mid);
+            padding-left: 1.4rem;
+            position: relative;
+        }
+        .story-block li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+        .story-block li b, .story-block p b { color: var(--text-dark); font-weight: 600; }
+        .story-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            padding-top: 0.2rem;
+        }
+        .story-stack span {
+            font-size: 0.75rem;
+            background: var(--bg-light);
+            color: var(--text-mid);
+            padding: 0.22rem 0.6rem;
+            border-radius: 5px;
+        }
+        .story-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.25rem;
+        }
+        body.story-open { overflow: hidden; }
+        @media (max-width: 600px) {
+            .story-overlay { padding: 0; }
+            .story-modal { border-radius: 0; min-height: 100%; padding: 3.2rem 1.25rem 2rem; }
+            .story-title { font-size: 1.2rem; }
+        }
         .p-link.disabled {
             opacity: 0.5;
             pointer-events: none;
@@ -1048,8 +1190,8 @@
                 </p>
                 <p style="font-size:.97rem;color:var(--text-mid);margin-bottom:1rem;line-height:1.85;">
                     Ce que j'aime dans ce domaine, c'est aller jusqu'au bout : de la donnée brute
-                    jusqu'au déploiement en production. Mes projets touchent des secteurs variés —
-                    finance, santé, agriculture, tourisme — avec à chaque fois une vraie problématique
+                    jusqu'au déploiement en production. Mes projets touchent des secteurs variés :
+                    finance, santé, agriculture, tourisme, avec à chaque fois une vraie problématique
                     terrain et une solution opérationnelle.
                 </p>
                 <p style="font-size:.97rem;color:var(--text-mid);line-height:1.85;">
@@ -1113,8 +1255,8 @@
                     <span class="tag" data-proj="bambouk">HTML / CSS / JS</span>
                     <span class="tag">Git / GitHub</span>
                     <span class="tag" data-proj="fraud,malaria,immohab,opportunity">Docker</span>
-                    <span class="tag" data-proj="teranga,immohab,pharmacie">SQL</span>
-                    <span class="tag" data-proj="teranga,immohab,pharmacie">Bases de données</span>
+                    <span class="tag" data-proj="teranga,immohab,pharmacie,sencommerce">SQL</span>
+                    <span class="tag" data-proj="teranga,immohab,pharmacie,sencommerce">Bases de données</span>
                     <span class="tag" data-proj="immohab,opportunity">REST API</span>
                     <span class="tag hi" data-proj="fraud,agro,immohab,opportunity">DevOps</span>
                     <span class="tag hi" data-proj="immohab,pharmacie,opportunity">Software Engineering</span>
@@ -1148,6 +1290,10 @@
                     <span class="tag" data-proj="teranga">Apache NiFi</span>
                     <span class="tag" data-proj="teranga">MLflow</span>
                     <span class="tag" data-proj="teranga,opportunity">Airflow</span>
+                    <span class="tag hi" data-proj="sencommerce">Business Intelligence</span>
+                    <span class="tag hi" data-proj="sencommerce">SSIS</span>
+                    <span class="tag" data-proj="sencommerce">SQL Server</span>
+                    <span class="tag" data-proj="sencommerce">Modélisation dimensionnelle</span>
                     <span class="tag" data-proj="agro,opportunity">Streamlit</span>
                 </div>
             </div>
@@ -1200,8 +1346,9 @@
                 <div class="project-body">
                     <h3 class="p-title">Détection de Fraude Bancaire</h3>
                     <p class="p-desc">
-                        5 algorithmes ML comparés pour détecter les fraudes, gestion du
-                        déséquilibre des classes et déploiement Flask + Docker.
+                        Moins de 0,2 % des transactions sont frauduleuses : un modèle qui répond « tout va bien » a
+                        99 % de réussite et ne sert à rien. 5 algorithmes comparés sur le rappel : <strong>3 fraudes
+                        sur 4 interceptées</strong>, service déployé.
                     </p>
                     <div class="p-tech">
                         <span>Python</span><span>Scikit-learn</span><span>Flask</span>
@@ -1210,6 +1357,7 @@
                     <div class="p-links">
                         <a href="https://machine-learning-bank-fraud-detection.onrender.com/" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                         <a href="https://github.com/pa-malick/MACHINE_LEARNING---BANK_FRAUD_DETECTION" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                        <button type="button" class="p-link more" data-story="fraud"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                     </div>
                 </div>
             </div>
@@ -1223,8 +1371,9 @@
                 <div class="project-body">
                     <h3 class="p-title">Détection du Paludisme</h3>
                     <p class="p-desc">
-                        CNN sur 27 558 images de cellules sanguines pour détecter le
-                        Plasmodium, avec prédiction web en temps réel.
+                        Là où le technicien de laboratoire manque, le diagnostic attend. Un CNN entraîné sur 27 558
+                        images de frottis rend un pré-diagnostic immédiat depuis un navigateur : <strong>96,64 %
+                        d'accuracy</strong>.
                     </p>
                     <div class="p-tech">
                         <span>Python</span><span>TensorFlow/Keras</span><span>CNN</span>
@@ -1233,6 +1382,7 @@
                     <div class="p-links">
                         <a href="https://deep-learning-malaria-detection-znf2.onrender.com" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                         <a href="https://github.com/pa-malick/DEEP_LEARNING-MALARIA_DETECTION" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                        <button type="button" class="p-link more" data-story="malaria"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                     </div>
                 </div>
             </div>
@@ -1246,8 +1396,9 @@
                     <div class="project-body">
                         <h3 class="p-title">AgroPredict SN</h3>
                         <p class="p-desc">
-                            Prédiction des rendements agricoles combinant simulation physique
-                            et ML, face aux aléas climatiques.
+                            Quand la pluviométrie devient imprévisible, une mauvaise décision de semis coûte une année
+                            de revenu. Prédiction de rendement par culture et par zone, couplant simulation physique et
+                            ML, accessible en un lien.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>Machine Learning</span><span>Streamlit</span>
@@ -1256,6 +1407,7 @@
                         <div class="p-links">
                             <a href="https://pa-malick.github.io/Agro_Predict-SN/" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                             <a href="https://github.com/pa-malick/Agro_Predict-SN" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="agro"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1269,8 +1421,9 @@
                     <div class="project-body">
                         <h3 class="p-title">Teranga-SN · Tourisme Big Data</h3>
                         <p class="p-desc">
-                            Plateforme Big Data temps réel pour le tourisme sénégalais.
-                            Projet Master 2 avec <strong>TINE Abdousalam</strong>.
+                            Les données du tourisme sénégalais arrivent en continu et ne sont jamais exploitées. Chaîne
+                            temps réel Kafka → Spark → Hive / HBase orchestrée par Airflow, pour décider le jour même.
+                            Projet M2 avec <strong>TINE Abdousalam</strong>.
                         </p>
                         <div class="p-tech">
                             <span>Flask</span><span>Airflow</span><span>Kafka</span>
@@ -1279,6 +1432,7 @@
                         </div>
                         <div class="p-links">
                             <a href="https://github.com/pa-malick/TerangaSN" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="teranga"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1292,8 +1446,9 @@
                     <div class="project-body">
                         <h3 class="p-title">ImmoHab · Gestion locative</h3>
                         <p class="p-desc">
-                            Gestion locative full-stack : rôles, auth JWT, CI/CD et 34 tests
-                            unitaires. Déploiement Docker + Railway.
+                            Loyers suivis au cahier, quittances perdues, litiges sans trace commune. Plateforme locative
+                            à rôles séparés et historique partagé : <strong>34 tests automatisés</strong>, CI/CD,
+                            déployée.
                         </p>
                         <div class="p-tech">
                             <span>Next.js 16</span><span>TypeScript</span><span>Prisma</span>
@@ -1302,6 +1457,7 @@
                         <div class="p-links">
                             <a href="https://immohab-production.up.railway.app" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                             <a href="https://github.com/pa-malick/Immohab" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="immohab"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1315,8 +1471,8 @@
                     <div class="project-body">
                         <h3 class="p-title">Bambouk Motors · Vitrine auto</h3>
                         <p class="p-desc">
-                            Site vitrine pour un concessionnaire sénégalais : catalogue
-                            et vente de véhicules neufs et d'occasion.
+                            Un stock de véhicules qui ne vit que sur WhatsApp est invisible pour l'acheteur qui cherche.
+                            Site vitrine responsive : catalogue neuf et occasion, contact direct depuis chaque fiche.
                         </p>
                         <div class="p-tech">
                             <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Netlify</span>
@@ -1324,6 +1480,7 @@
                         <div class="p-links">
                             <a href="https://amazing-starship-2cc943.netlify.app/" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                             <a href="https://github.com/pa-malick/BamboukMotors-WebSite" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="bambouk"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1337,8 +1494,9 @@
                     <div class="project-body">
                         <h3 class="p-title">SentimentAI · Sentiment IMDB</h3>
                         <p class="p-desc">
-                            50 000 critiques IMDB : TF-IDF, Forêt Aléatoire et DistilBERT
-                            fine-tuné comparés (89,2 % d'accuracy).
+                            Des milliers d'avis clients que personne n'a le temps de lire : le signal négatif arrive
+                            toujours trop tard. TF-IDF contre DistilBERT fine-tuné sur 50 000 critiques : <strong>89,2 %
+                            d'accuracy</strong>.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>NLP</span><span>TF-IDF</span>
@@ -1347,6 +1505,7 @@
                         <div class="p-links">
                             <a href="https://sentimentai-df0c.onrender.com" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                             <a href="https://github.com/pa-malick/SentimentAI" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="sentiment"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1360,8 +1519,9 @@
                     <div class="project-body">
                         <h3 class="p-title">SenegalGPT · Assistant IA</h3>
                         <p class="p-desc">
-                            Assistant conversationnel FR / EN / wolof sur les documents
-                            officiels du Sénégal (Vision 2050, PSE, ANSD).
+                            Vision 2050, PSE, rapports ANSD : l'information est publique mais illisible, et rien
+                            n'existe en wolof. Assistant RAG qui répond en français, anglais et wolof à partir des
+                            documents officiels.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>LLM</span><span>RAG</span>
@@ -1370,6 +1530,7 @@
                         <div class="p-links">
                             <a href="https://pamalick00-senegalgpt.hf.space" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                             <a href="https://github.com/pa-malick/SenegalGPT" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="senegalgpt"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1383,14 +1544,16 @@
                     <div class="project-body">
                         <h3 class="p-title">Pharmacie · Module ERP Odoo</h3>
                         <p class="p-desc">
-                            Module ERP pour une officine pharmaceutique : stocks FEFO,
-                            ventes, ordonnances et réapprovisionnement.
+                            Une officine qui suit ses stocks à la main jette des lots périmés et manque des médicaments
+                            vitaux. Module Odoo 18 : sorties FEFO, ordonnances tracées, réapprovisionnement déclenché
+                            par seuil.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>Odoo 18</span><span>PostgreSQL</span><span>ERP</span>
                         </div>
                         <div class="p-links">
                             <a href="https://github.com/pa-malick/pharmacie-management" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="pharmacie"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1404,8 +1567,9 @@
                     <div class="project-body">
                         <h3 class="p-title">Détection de drones · YOLOv11</h3>
                         <p class="p-desc">
-                            Détection d'objets de bout en bout (Roboflow → entraînement → ONNX).
-                            Fuite de données corrigée. mAP@50 0,86 · Precision 0,93.
+                            Personne ne surveille un ciel vide pendant huit heures : le drone passe pendant la minute
+                            d'inattention. Pipeline Roboflow → YOLOv11 → ONNX, fuite de données corrigée,
+                            <strong>mAP@50 0,86 · précision 0,93</strong>.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>YOLOv11</span><span>Ultralytics</span>
@@ -1414,6 +1578,7 @@
                         <div class="p-links">
                             <a href="https://pamalick00-detection-drones.static.hf.space" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                             <a href="https://github.com/pa-malick/Detection_Drones_YOLO" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="drones"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1427,8 +1592,8 @@
                     <div class="project-body">
                         <h3 class="p-title">Cancer du sein · ViT</h3>
                         <p class="p-desc">
-                            Classification d'images histopathologiques (bénin / cancer) :
-                            ViT de Google fine-tuné vs ResNet50, déséquilibre géré par perte pondérée.
+                            Peu de spécialistes, des lames qui s'empilent, un délai de diagnostic qui s'allonge. ViT de
+                            Google fine-tuné face à ResNet50, perte pondérée pour ne pas manquer les cas positifs.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>ViT</span><span>PyTorch</span>
@@ -1437,6 +1602,7 @@
                         <div class="p-links">
                             <a href="https://pamalick00-cancer-sein-vit.static.hf.space" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                             <a href="https://github.com/pa-malick/Cancer_Sein_ViT" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="cancer"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1450,9 +1616,9 @@
                     <div class="project-body">
                         <h3 class="p-title">OpportunitySN · Veille emploi tech automatisée</h3>
                         <p class="p-desc">
-                            Automatisation de bout en bout du marché de l'emploi tech : chaque jour,
-                            collecte des offres → nettoyage → détection d'anomalies de salaire → suivi
-                            des tendances de compétences, puis diffusion via dashboard, emails et Slack / WhatsApp.
+                            Dix sites à ouvrir chaque matin, les mêmes offres republiées, aucun repère de salaire.
+                            Pipeline Airflow quotidien : collecte, dédoublonnage, anomalies de salaire, tendances de
+                            compétences, diffusion dashboard / e-mail / Slack.
                         </p>
                         <div class="p-tech">
                             <span>Python</span><span>Airflow</span><span>FastAPI</span><span>Vue</span>
@@ -1461,6 +1627,33 @@
                         <div class="p-links">
                             <a href="https://opportinutysn.netlify.app" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
                             <a href="https://github.com/pa-malick/OpportinutySN" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <button type="button" class="p-link more" data-story="opportunity"><i class="fas fa-circle-info"></i> Le projet en détail</button>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Projet 13 : Entrepôt de données SenCommerce -->
+                <div class="project-card fade-up" id="p-sencommerce" data-proj="sencommerce">
+                    <div class="project-top">
+                        <span class="p-icon">🗃️</span>
+                        <span class="p-badge bi">Business Intelligence</span>
+                    </div>
+                    <div class="project-body">
+                        <h3 class="p-title">SenCommerce · Entrepôt de données</h3>
+                        <p class="p-desc">
+                            Quatre fichiers plats truffés d'erreurs : doublons, « Thies » ou « Thiès », vente datée du
+                            31 février, et un chiffre d'affaires que personne ne calcule pareil. Entrepôt en schéma
+                            étoile alimenté par SSIS : <strong>1 714 ventes chargées sur 1 801</strong>, les 87 rejets
+                            tracés avec leur motif.
+                        </p>
+                        <div class="p-tech">
+                            <span>SSIS</span><span>SQL Server</span><span>T-SQL</span>
+                            <span>Schéma étoile</span><span>ETL</span>
+                        </div>
+                        <div class="p-links">
+                            <a href="https://github.com/pa-malick/etl-ssis-entrepot-commerce" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://github.com/pa-malick/etl-ssis-entrepot-commerce/blob/main/Compte_rendu.pdf" target="_blank" class="p-link doc"><i class="fas fa-file-pdf"></i> Compte rendu</a>
+                            <button type="button" class="p-link more" data-story="sencommerce"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
                 </div>
@@ -1644,6 +1837,44 @@
 </footer>
 
 <!-- ========================
+     FICHE PROJET DÉTAILLÉE
+======================== -->
+<div class="story-overlay" id="storyOverlay" role="dialog" aria-modal="true" aria-labelledby="storyTitle" aria-hidden="true">
+    <div class="story-modal" id="storyModal">
+        <button type="button" class="story-close" id="storyClose" aria-label="Fermer la fiche projet">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="story-top">
+            <span class="p-icon" id="storyIcon"></span>
+            <span class="p-badge" id="storyBadge"></span>
+        </div>
+        <h3 class="story-title" id="storyTitle"></h3>
+        <p class="story-who" id="storyWho"></p>
+        <div class="story-block">
+            <h4>Le problème</h4>
+            <p id="storyProblem"></p>
+        </div>
+        <div class="story-block">
+            <h4>La solution</h4>
+            <p id="storySolution"></p>
+        </div>
+        <div class="story-block">
+            <h4>Les résultats</h4>
+            <ul id="storyResults"></ul>
+        </div>
+        <div class="story-block">
+            <h4>Comment ça s'utilise</h4>
+            <p id="storyUsage"></p>
+        </div>
+        <div class="story-block">
+            <h4>Stack</h4>
+            <div class="story-stack" id="storyStack"></div>
+        </div>
+        <div class="story-links" id="storyLinks"></div>
+    </div>
+</div>
+
+<!-- ========================
      SCRIPTS (CDN)
 ======================== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
@@ -1652,7 +1883,7 @@
 
 <script>
 /* ============================================================
-   1. NAVBAR — shadow au scroll + hamburger mobile
+   1. NAVBAR : shadow au scroll + hamburger mobile
 ============================================================ */
 const navbar   = document.getElementById('navbar');
 const hbg      = document.getElementById('hbg');
@@ -1672,7 +1903,7 @@ function closeNav() {
 }
 
 /* ============================================================
-   2. THREE.JS — réseau de particules en arrière-plan du Hero
+   2. THREE.JS : réseau de particules en arrière-plan du Hero
    Subtil : points bleus reliés par des lignes quasi-invisibles
 ============================================================ */
 (function () {
@@ -1757,7 +1988,7 @@ function closeNav() {
 })();
 
 /* ============================================================
-   3. GSAP — animations au scroll (ScrollTrigger)
+   3. GSAP : animations au scroll (ScrollTrigger)
 ============================================================ */
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1906,5 +2137,325 @@ ScrollTrigger.create({
 
 </script>
 
+
+<script>
+/* ==========================================================
+   Fiches projet détaillées : problème → pour qui → solution
+   → résultats → usage réel.
+   ========================================================== */
+const PROJECT_STORIES = {
+
+  fraud: {
+    icon: '🏦', badge: 'Machine Learning', badgeClass: 'ml',
+    title: 'Détection de Fraude Bancaire',
+    who: 'Pour les <b>équipes risque et conformité</b> des banques et des opérateurs de mobile money.',
+    problem: "Sur des millions de transactions, les fraudes représentent moins de 0,2 %. Un modèle qui répondrait « tout est normal » afficherait plus de 99 % de réussite sans détecter la moindre fraude : c'est le piège de ce problème. Chaque fraude qui passe est une perte sèche et un client qui perd confiance ; chaque fausse alerte est un client honnête bloqué au moment de payer.",
+    solution: "Cinq algorithmes de classification comparés sur les mêmes données, déséquilibre des classes traité par SMOTE, et surtout un choix de modèle piloté par le <b>rappel</b> (la part des fraudes réellement interceptées) plutôt que par l'accuracy, trompeuse ici. Le modèle retenu est servi par une API Flask conteneurisée avec Docker.",
+    results: [
+      "Modèle SVM retenu : <b>75 % de rappel</b>, soit 3 fraudes sur 4 interceptées.",
+      "F1-score de 30,99 % : l'arbitrage entre fraudes manquées et clients bloqués à tort est assumé et documenté.",
+      "Service déployé et interrogeable en ligne, pas seulement un notebook."
+    ],
+    usage: "Le modèle se branche en scoring avant la validation d'une transaction : au-dessus du seuil, elle part en vérification manuelle. Le seuil se règle selon le coût réel d'un blocage injustifié pour la banque.",
+    stack: ['Python', 'Scikit-learn', 'SMOTE', 'Flask', 'Docker'],
+    links: [
+      { href: 'https://machine-learning-bank-fraud-detection.onrender.com/', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/MACHINE_LEARNING---BANK_FRAUD_DETECTION', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  malaria: {
+    icon: '🔬', badge: 'Deep Learning', badgeClass: 'dl',
+    title: 'Détection du Paludisme',
+    who: 'Pour les <b>postes de santé et laboratoires décentralisés</b>, là où le personnel spécialisé manque.',
+    problem: "Le diagnostic du paludisme repose sur la lecture au microscope d'un frottis sanguin par un technicien formé. Dans les zones rurales, ce personnel est rare et surchargé : le patient attend, et un frottis mal lu renvoie chez lui quelqu'un porteur d'une infection potentiellement mortelle.",
+    solution: "Un réseau de neurones convolutif entraîné sur les 27 558 images de cellules sanguines du dataset NIH, exposé derrière une interface web où l'on dépose une image et obtient une réponse immédiate. L'ensemble est conteneurisé et déployé.",
+    results: [
+      "<b>96,64 % d'accuracy</b> sur le jeu de test.",
+      "Prédiction en temps réel depuis un navigateur, sans installation.",
+      "Application déployée en ligne, utilisable par une personne non technique."
+    ],
+    usage: "En pré-lecture : l'outil trie les lames et remonte les cas suspects en priorité, le technicien confirme. Il ne remplace pas le diagnostic humain, il évite que celui-ci soit le goulot d'étranglement.",
+    stack: ['Python', 'TensorFlow / Keras', 'CNN', 'Flask', 'Docker'],
+    links: [
+      { href: 'https://deep-learning-malaria-detection-znf2.onrender.com', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/DEEP_LEARNING-MALARIA_DETECTION', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  agro: {
+    icon: '🌾', badge: 'Machine Learning', badgeClass: 'ml',
+    title: 'AgroPredict SN',
+    who: 'Pour les <b>agriculteurs sénégalais, les coopératives et les conseillers agricoles</b>.',
+    problem: "Un agriculteur décide chaque année quoi semer et quand, en se fiant à une pluviométrie devenue imprévisible. Une mauvaise estimation, et c'est le revenu d'une année entière qui disparaît. Les modèles agronomiques existants restent hors de portée d'une coopérative : trop lourds, trop techniques, jamais adaptés au contexte local.",
+    solution: "Un couplage entre <b>simulation physique</b> (eau, sol, climat, hérité de ma formation en physique numérique) et <b>machine learning</b> sur les données de rendement, réuni dans une application Streamlit qui s'ouvre dans un navigateur, sans installation.",
+    results: [
+      "Prédiction de rendement par culture et par zone, accessible en ligne.",
+      "Approche hybride physique + ML : le résultat reste explicable, ce n'est pas une boîte noire.",
+      "Application publiée et utilisable directement, sans compte ni installation."
+    ],
+    usage: "Un conseiller agricole ou une coopérative simule plusieurs scénarios de campagne avant les semis et oriente la distribution d'intrants vers les zones les plus exposées.",
+    stack: ['Python', 'Machine Learning', 'Simulation physique', 'Streamlit', 'DevOps'],
+    links: [
+      { href: 'https://pa-malick.github.io/Agro_Predict-SN/', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/Agro_Predict-SN', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  teranga: {
+    icon: '🇸🇳', badge: 'Data Engineering', badgeClass: 'de',
+    title: 'Teranga-SN · Tourisme Big Data',
+    who: 'Pour les <b>hôtels, agences de voyage et institutions du tourisme</b> sénégalais.',
+    problem: "Le tourisme est l'un des premiers pourvoyeurs de devises du pays, mais ses données (réservations, flux de visiteurs, avis en ligne) arrivent en continu et repartent aussitôt dans le vide. Les acteurs fixent leurs prix et leurs capacités sans aucune visibilité sur ce qui se passe réellement au moment où ça se passe.",
+    solution: "Une chaîne Big Data complète : ingestion temps réel avec <b>Kafka</b> et <b>NiFi</b>, traitement en flux avec <b>Spark Streaming</b>, stockage <b>Hive / HBase</b>, orchestration <b>Airflow</b>, modèles suivis dans <b>MLflow</b> et restitution web. Projet de Master 2 mené avec TINE Abdousalam.",
+    results: [
+      "Pipeline de bout en bout fonctionnel, de l'ingestion à la restitution.",
+      "Traitement en flux continu plutôt qu'en batch de fin de mois.",
+      "Cycle de vie des modèles tracé dans MLflow : versions, métriques, reproductibilité."
+    ],
+    usage: "Un hôtel ajuste ses tarifs sur la demande observée du jour ; une institution suit les flux par région pour orienter ses investissements au lieu de les constater après coup.",
+    stack: ['Kafka', 'Spark Streaming', 'Hive', 'HBase', 'NiFi', 'Airflow', 'MLflow', 'Flask'],
+    links: [
+      { href: 'https://github.com/pa-malick/TerangaSN', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  immohab: {
+    icon: '🏠', badge: 'Web · Full-stack', badgeClass: 'web',
+    title: 'ImmoHab · Gestion locative',
+    who: 'Pour les <b>propriétaires, agences immobilières et locataires</b>.',
+    problem: "La gestion locative se fait encore au cahier et sur WhatsApp : quittances perdues, loyers en retard qu'on ne suit plus, et surtout aucune trace commune le jour où propriétaire et locataire ne sont pas d'accord. Le litige se règle alors à la parole contre la parole.",
+    solution: "Une plateforme full-stack avec des <b>rôles séparés</b> (administrateur, propriétaire, locataire), une authentification JWT et un historique consultable par chacun depuis son espace. Livrée avec intégration continue, conteneurisation et une suite de tests automatisés.",
+    results: [
+      "<b>34 tests automatisés</b>, dont des tests de sécurité sur le cloisonnement des rôles.",
+      "Chaîne CI/CD complète et déploiement conteneurisé sur Railway.",
+      "Application en ligne, testable immédiatement."
+    ],
+    usage: "Une agence y suit son parc, ses encaissements et ses relances ; le locataire retrouve ses quittances sans avoir à les réclamer. La trace écrite devient partagée, donc opposable.",
+    stack: ['Next.js 16', 'TypeScript', 'Prisma', 'PostgreSQL', 'Docker', 'CI/CD'],
+    links: [
+      { href: 'https://immohab-production.up.railway.app', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/Immohab', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  bambouk: {
+    icon: '🚗', badge: 'Web · Front-end', badgeClass: 'web',
+    title: 'Bambouk Motors · Vitrine auto',
+    who: "Pour un <b>concessionnaire automobile sénégalais</b> et ses acheteurs.",
+    problem: "Le stock d'un concessionnaire ne vit que sur Facebook et WhatsApp : les annonces disparaissent dans le fil, l'acheteur qui cherche un modèle précis ne trouve rien, et l'entreprise n'a aucune adresse sérieuse à donner à un client.",
+    solution: "Un site vitrine responsive qui présente le catalogue de véhicules neufs et d'occasion, met en avant les modèles disponibles et ouvre un contact direct depuis chaque fiche. Hébergement statique : rapide et sans coût d'infrastructure.",
+    results: [
+      "Catalogue neuf et occasion consultable sur mobile comme sur ordinateur.",
+      "Une adresse professionnelle à communiquer, au lieu d'une page de réseau social.",
+      "Hébergement statique : chargement rapide, coût d'exploitation nul."
+    ],
+    usage: "Le concessionnaire partage un lien de fiche véhicule plutôt qu'une photo perdue dans une conversation, et reçoit les demandes depuis le site.",
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'Netlify'],
+    links: [
+      { href: 'https://amazing-starship-2cc943.netlify.app/', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/BamboukMotors-WebSite', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  sentiment: {
+    icon: '💬', badge: 'NLP', badgeClass: 'nlp',
+    title: 'SentimentAI · Analyse de sentiment',
+    who: "Pour les <b>équipes produit et service client</b> qui reçoivent plus d'avis qu'elles ne peuvent en lire.",
+    problem: "Une entreprise reçoit chaque semaine des milliers d'avis, de commentaires et de messages. Personne ne les lit tous : le signal négatif (le bug, la livraison ratée, le produit qui déçoit) n'est repéré que lorsqu'il est devenu visible publiquement, c'est-à-dire trop tard.",
+    solution: "Deux familles d'approches mises en concurrence sur 50 000 critiques : une chaîne classique <b>TF-IDF + Forêt aléatoire</b>, légère et instantanée, contre un <b>DistilBERT fine-tuné</b>, plus lourd mais plus fin. La comparaison est le cœur du projet : quel gain de qualité pour quel coût de calcul.",
+    results: [
+      "<b>89,2 % d'accuracy</b> pour le meilleur modèle.",
+      "Arbitrage coût / performance documenté entre approche classique et transformer.",
+      "Démonstrateur web en ligne : on colle un texte, on obtient le sentiment."
+    ],
+    usage: "Branché sur un flux d'avis, le modèle classe automatiquement les retours et fait remonter les négatifs en priorité au service concerné, au lieu de les laisser s'accumuler.",
+    stack: ['Python', 'TF-IDF', 'DistilBERT', 'HuggingFace', 'Flask'],
+    links: [
+      { href: 'https://sentimentai-df0c.onrender.com', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/SentimentAI', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  senegalgpt: {
+    icon: '🤖', badge: 'LLM · RAG', badgeClass: 'llm',
+    title: 'SenegalGPT · Assistant IA',
+    who: "Pour les <b>citoyens, étudiants, journalistes et ONG</b> qui ont besoin de comprendre les politiques publiques sénégalaises.",
+    problem: "Les documents qui engagent l'avenir du pays (Vision 2050, PSE, rapports de l'ANSD) font des centaines de pages dans une langue administrative dense. L'information est publique mais illisible : personne ne parcourt 400 pages pour vérifier un chiffre, et rien n'existe en wolof, la langue réellement parlée au quotidien.",
+    solution: "Un assistant conversationnel <b>RAG</b> : les documents officiels sont découpés et indexés, et chaque réponse se construit à partir des passages retrouvés, ce qui limite l'invention. Questions et réponses fonctionnent en <b>français, anglais et wolof</b>.",
+    results: [
+      "Réponses ancrées dans les documents officiels plutôt que dans la mémoire du modèle.",
+      "Trois langues, dont le wolof : la barrière linguistique tombe.",
+      "Assistant déployé publiquement, accessible sans compte."
+    ],
+    usage: "Un étudiant vérifie un chiffre du PSE en une question ; une ONG retrouve l'engagement exact d'un document de politique publique sans avoir à le lire en entier.",
+    stack: ['Python', 'LLM', 'RAG', 'NLP multilingue', 'HuggingFace Spaces'],
+    links: [
+      { href: 'https://pamalick00-senegalgpt.hf.space', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/SenegalGPT', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  pharmacie: {
+    icon: '💊', badge: 'ERP · Odoo', badgeClass: 'erp',
+    title: 'Pharmacie · Module ERP Odoo',
+    who: 'Pour les <b>officines pharmaceutiques</b> et leur personnel de comptoir.',
+    problem: "Une officine qui suit ses stocks à la main jette des lots périmés qu'elle avait en rayon et tombe en rupture sur des médicaments vitaux. Les ordonnances ne laissent aucune trace exploitable : impossible de savoir ce qui se délivre réellement, donc impossible de commander au bon moment.",
+    solution: "Un module métier greffé sur <b>Odoo 18</b> : gestion des stocks en <b>FEFO</b> (premier périmé, premier sorti), ventes au comptoir, suivi des ordonnances et déclenchement automatique du réapprovisionnement sur seuil.",
+    results: [
+      "Règle FEFO appliquée automatiquement : les lots proches de la péremption sortent en premier.",
+      "Ordonnances tracées et rattachées aux ventes.",
+      "Réapprovisionnement déclenché par seuil, sans surveillance manuelle."
+    ],
+    usage: "Le module s'installe sur une instance Odoo existante : la pharmacie garde sa comptabilité et ses achats, et gagne la partie métier qui lui manquait.",
+    stack: ['Python', 'Odoo 18', 'PostgreSQL', 'ERP'],
+    links: [
+      { href: 'https://github.com/pa-malick/pharmacie-management', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  drones: {
+    icon: '🛸', badge: 'Computer Vision', badgeClass: 'cv',
+    title: 'Détection de drones · YOLOv11',
+    who: "Pour les <b>opérateurs de sécurité de sites sensibles</b> : aéroports, stades, sites industriels.",
+    problem: "Les drones civils sont devenus accessibles à tous et survolent des espaces où ils n'ont rien à faire. La parade actuelle, c'est un agent devant des écrans : personne ne reste attentif à un ciel vide pendant huit heures, et le drone passe précisément pendant la minute d'inattention.",
+    solution: "Un pipeline Computer Vision complet : jeu de données annoté sur <b>Roboflow</b>, entraînement <b>YOLOv11</b>, export <b>ONNX</b> pour tourner hors du serveur d'entraînement. Une <b>fuite de données</b> entre entraînement et validation, qui gonflait artificiellement les scores, a été identifiée et corrigée : les métriques ci-dessous sont celles d'après correction.",
+    results: [
+      "<b>mAP@50 de 0,86</b> et <b>précision de 0,93</b> après correction de la fuite de données.",
+      "Modèle exporté en ONNX : exécutable côté navigateur ou sur machine embarquée, sans GPU dédié.",
+      "Démonstrateur en ligne pour tester la détection sur ses propres images."
+    ],
+    usage: "Le modèle s'intercale sur un flux caméra existant et déclenche une alerte à la détection. L'agent n'a plus à surveiller l'écran, il réagit quand le système l'appelle.",
+    stack: ['Python', 'YOLOv11', 'Ultralytics', 'Roboflow', 'ONNX', 'Vue'],
+    links: [
+      { href: 'https://pamalick00-detection-drones.static.hf.space', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/Detection_Drones_YOLO', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  cancer: {
+    icon: '🔬', badge: 'Computer Vision', badgeClass: 'cv',
+    title: 'Cancer du sein · Vision Transformer',
+    who: "Pour les <b>services d'anatomopathologie</b>, où le nombre de spécialistes est limité et les délais s'allongent.",
+    problem: "Le diagnostic du cancer du sein passe par la lecture de lames histopathologiques, un travail long qui ne peut être fait que par un spécialiste. Quand ces spécialistes sont peu nombreux, les lames s'empilent et le délai entre le prélèvement et le résultat s'étire, et sur un cancer, ce délai a un coût direct pour la patiente.",
+    solution: "Une classification bénin / malin par <b>Vision Transformer</b> (ViT de Google) fine-tuné, comparé à une architecture <b>ResNet50</b> de référence. Le déséquilibre entre classes est traité par une <b>perte pondérée</b>, pour que le modèle ne se contente pas de la classe majoritaire : un faux négatif n'a pas le même coût qu'un faux positif.",
+    results: [
+      "Vision Transformer confronté à ResNet50 sur le même jeu de données, protocole identique.",
+      "Perte pondérée pour privilégier la détection des cas positifs face au déséquilibre des classes.",
+      "Démonstrateur en ligne : on dépose une image histopathologique, on obtient la classification."
+    ],
+    usage: "En priorisation : les lames classées suspectes remontent en haut de la pile du pathologiste. La décision reste médicale, l'outil ne fait que réordonner la file d'attente.",
+    stack: ['Python', 'ViT', 'PyTorch', 'Transformers', 'HuggingFace', 'Vue'],
+    links: [
+      { href: 'https://pamalick00-cancer-sein-vit.static.hf.space', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/Cancer_Sein_ViT', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  opportunity: {
+    icon: '🎯', badge: 'Data Engineering', badgeClass: 'de',
+    title: 'OpportunitySN · Veille emploi tech',
+    who: "Pour les <b>chercheurs d'emploi tech, les écoles et les recruteurs</b> du marché sénégalais.",
+    problem: "Un développeur qui cherche un poste ouvre dix sites chaque matin, retombe sur les mêmes annonces republiées, et n'a aucune idée de ce qu'un profil comme le sien vaut réellement ni des compétences qui montent. Les écoles, elles, forment sans visibilité sur ce que le marché demande aujourd'hui.",
+    solution: "Un pipeline quotidien orchestré par <b>Airflow</b> : collecte des offres, nettoyage et dédoublonnage, <b>détection d'anomalies de salaire</b>, suivi des tendances de compétences. Les résultats sont diffusés là où les gens sont déjà : dashboard, e-mail, Slack et WhatsApp.",
+    results: [
+      "Chaîne automatisée de bout en bout, relancée chaque jour sans intervention.",
+      "Offres dédoublonnées : une annonce republiée sur trois sites ne remonte qu'une fois.",
+      "Anomalies de salaire signalées et tendances de compétences suivies dans le temps.",
+      "Diffusion multicanale : dashboard, e-mail, Slack / WhatsApp."
+    ],
+    usage: "Un candidat reçoit chaque matin les offres nouvelles qui le concernent, avec un repère de salaire ; une école lit le baromètre des compétences demandées et ajuste son programme.",
+    stack: ['Python', 'Airflow', 'FastAPI', 'Vue', 'Docker', 'Streamlit', 'Plotly'],
+    links: [
+      { href: 'https://opportinutysn.netlify.app', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/OpportinutySN', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+    ]
+  },
+
+  sencommerce: {
+    icon: '🗃️', badge: 'Business Intelligence', badgeClass: 'bi',
+    title: 'SenCommerce · Entrepôt de données',
+    who: "Pour la <b>direction commerciale et le contrôle de gestion</b> d'une entreprise de distribution.",
+    problem: "SenCommerce veut analyser son premier trimestre 2026, mais ses données sont éparpillées dans quatre fichiers plats peu fiables : un client en double, des régions écrites tantôt « Thies » tantôt « Thiès », un produit sans prix, un autre à coût négatif, une vente datée du 31 février, une remise de 150 %, des références qui n'existent pas. Tant que ce socle n'est pas fiable, deux personnes qui calculent le même chiffre d'affaires trouvent deux résultats différents, et aucune décision ne s'appuie sur rien de solide.",
+    solution: "Un entrepôt en <b>schéma étoile</b> sur SQL Server, alimenté par un package <b>SSIS</b> unique découpé en cinq flux : les quatre dimensions d'abord, la table de faits ensuite. Chaque ligne non conforme n'est pas perdue mais tracée dans une <b>table d'audit</b> avec son motif de rejet et sa ligne d'origine : le rejet devient une information, pas un silence.",
+    results: [
+      "<b>1 714 ventes chargées sur 1 801</b>, les 87 écartées étant justifiées une par une.",
+      "Chiffre d'affaires net de <b>1,02 milliard de F CFA</b> calculé par canal de vente.",
+      "Package <b>ré-exécutable</b> : on le relance sans créer un seul doublon.",
+      "Traçabilité complète : chaque rejet porte son motif et sa ligne source."
+    ],
+    usage: "L'entrepôt sert de socle unique aux tableaux de bord (Power BI ou autre) : un seul chiffre d'affaires pour tout le monde. Le package se replanifie en chargement quotidien, et la table d'audit devient l'outil de contrôle qualité des fichiers reçus.",
+    stack: ['SSIS', 'SQL Server', 'T-SQL', 'Schéma étoile', 'ETL', 'Modélisation dimensionnelle'],
+    links: [
+      { href: 'https://github.com/pa-malick/etl-ssis-entrepot-commerce', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' },
+      { href: 'https://github.com/pa-malick/etl-ssis-entrepot-commerce/blob/main/Compte_rendu.pdf', cls: 'doc', icon: 'fas fa-file-pdf', label: 'Compte rendu' }
+    ]
+  }
+
+};
+
+(function () {
+    const overlay = document.getElementById('storyOverlay');
+    if (!overlay) return;
+
+    const els = {
+        icon:     document.getElementById('storyIcon'),
+        badge:    document.getElementById('storyBadge'),
+        title:    document.getElementById('storyTitle'),
+        who:      document.getElementById('storyWho'),
+        problem:  document.getElementById('storyProblem'),
+        solution: document.getElementById('storySolution'),
+        results:  document.getElementById('storyResults'),
+        usage:    document.getElementById('storyUsage'),
+        stack:    document.getElementById('storyStack'),
+        links:    document.getElementById('storyLinks')
+    };
+    let lastFocused = null;
+
+    function openStory(slug) {
+        const s = PROJECT_STORIES[slug];
+        if (!s) return;
+
+        els.icon.textContent  = s.icon;
+        els.badge.className   = 'p-badge ' + s.badgeClass;
+        els.badge.textContent = s.badge;
+        els.title.textContent = s.title;
+        els.who.innerHTML     = s.who;
+        els.problem.innerHTML = s.problem;
+        els.solution.innerHTML= s.solution;
+        els.usage.innerHTML   = s.usage;
+        els.results.innerHTML = s.results.map(r => '<li>' + r + '</li>').join('');
+        els.stack.innerHTML   = s.stack.map(t => '<span>' + t + '</span>').join('');
+        els.links.innerHTML   = s.links.map(l =>
+            '<a href="' + l.href + '" target="_blank" rel="noopener" class="p-link ' + l.cls + '">' +
+            '<i class="' + l.icon + '"></i> ' + l.label + '</a>'
+        ).join('');
+
+        lastFocused = document.activeElement;
+        overlay.classList.add('open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('story-open');
+        document.getElementById('storyModal').scrollTop = 0;
+        overlay.scrollTop = 0;
+        document.getElementById('storyClose').focus();
+    }
+
+    function closeStory() {
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('story-open');
+        if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('[data-story]').forEach(btn => {
+        btn.addEventListener('click', () => openStory(btn.getAttribute('data-story')));
+    });
+    document.getElementById('storyClose').addEventListener('click', closeStory);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeStory(); });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeStory();
+    });
+})();
+</script>
 </body>
 </html>

@@ -19,10 +19,11 @@ Je construis des solutions complètes : du pipeline de données au déploiement 
 | 🚗 | **Bambouk Motors** : vitrine automobile responsive pour le marché sénégalais | HTML5 · CSS3 · JavaScript · Netlify | [Démo](https://amazing-starship-2cc943.netlify.app/) · [GitHub](https://github.com/pa-malick/BamboukMotors-WebSite) |
 | 💬 | **SentimentAI** : analyse de sentiment NLP sur 50 000 critiques IMDB, comparaison TF-IDF vs DistilBERT fine-tuné (89,2%) | Python · NLP · TF-IDF · DistilBERT · HuggingFace · Flask · GSAP | [Démo](https://sentimentai-df0c.onrender.com) · [GitHub](https://github.com/pa-malick/SentimentAI) |
 | 🤖 | **SenegalGPT** : assistant conversationnel FR / EN / wolof sur les documents officiels du Sénégal (Vision 2050, PSE, ANSD) | Python · LLM · RAG · NLP multilingue · HuggingFace Spaces | [Démo](https://pamalick00-senegalgpt.hf.space) · [GitHub](https://github.com/pa-malick/SenegalGPT) |
-| 💊 | **Pharmacie** : module ERP pour officine — stocks FEFO, ventes, ordonnances, réapprovisionnement | Python · Odoo 18 · PostgreSQL · ERP | [GitHub](https://github.com/pa-malick/pharmacie-management) |
+| 💊 | **Pharmacie** : module ERP pour officine, gérant les stocks FEFO, les ventes, les ordonnances et le réapprovisionnement | Python · Odoo 18 · PostgreSQL · ERP | [GitHub](https://github.com/pa-malick/pharmacie-management) |
 | 🛸 | **Détection de drones** : pipeline Computer Vision de bout en bout (Roboflow → entraînement → ONNX), mAP@50 0,86 · Precision 0,93 | Python · YOLOv11 · Ultralytics · Roboflow · ONNX · Vue | [Démo](https://pamalick00-detection-drones.static.hf.space) · [GitHub](https://github.com/pa-malick/Detection_Drones_YOLO) |
 | 🔬 | **Cancer du sein · ViT** : classification d'images histopathologiques, ViT fine-tuné vs ResNet50, perte pondérée | Python · ViT · PyTorch · Transformers · HuggingFace · Vue | [Démo](https://pamalick00-cancer-sein-vit.static.hf.space) · [GitHub](https://github.com/pa-malick/Cancer_Sein_ViT) |
-| 🎯 | **OpportunitySN** : veille emploi tech automatisée — collecte quotidienne, détection d'anomalies de salaire, tendances de compétences, diffusion dashboard / email / Slack | Python · Airflow · FastAPI · Vue · Docker · Streamlit · Plotly | [Démo](https://opportinutysn.netlify.app) · [GitHub](https://github.com/pa-malick/OpportinutySN) |
+| 🎯 | **OpportunitySN** : veille emploi tech automatisée, avec collecte quotidienne, détection d'anomalies de salaire, tendances de compétences, diffusion dashboard / email / Slack | Python · Airflow · FastAPI · Vue · Docker · Streamlit · Plotly | [Démo](https://opportinutysn.netlify.app) · [GitHub](https://github.com/pa-malick/OpportinutySN) |
+| 🗃️ | **Entrepôt SenCommerce** : quatre fichiers plats non fiables consolidés en entrepôt schéma étoile via SSIS. 1 714 ventes chargées sur 1 801, 87 rejets tracés avec leur motif, package ré-exécutable sans doublon | SSIS · SQL Server · T-SQL · Schéma étoile · ETL | [Compte rendu](https://github.com/pa-malick/etl-ssis-entrepot-commerce/blob/main/Compte_rendu.pdf) · [GitHub](https://github.com/pa-malick/etl-ssis-entrepot-commerce) |
 
 ---
 
@@ -32,6 +33,7 @@ Je construis des solutions complètes : du pipeline de données au déploiement 
 **Computer Vision** · YOLOv11 · Ultralytics · ViT · ResNet50 · Roboflow · ONNX  
 **NLP & LLM** · TF-IDF · DistilBERT · HuggingFace Transformers · RAG  
 **Big Data** · Kafka · Spark Streaming · Hive · HBase · NiFi · Airflow  
+**BI & Data Warehouse** · SSIS · SQL Server · T-SQL · Schéma étoile · Modélisation dimensionnelle  
 **Full-Stack** · Next.js 16 · TypeScript · Prisma ORM · PostgreSQL · FastAPI · Flask · Vue  
 **DevOps** · Docker · Railway · GitHub Actions · Streamlit · HuggingFace Spaces · GitHub Pages
 
