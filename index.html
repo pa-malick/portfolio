@@ -1257,7 +1257,8 @@
                     <span class="tag" data-proj="fraud,malaria,immohab,opportunity">Docker</span>
                     <span class="tag" data-proj="teranga,immohab,pharmacie,sencommerce">SQL</span>
                     <span class="tag" data-proj="teranga,immohab,pharmacie,sencommerce">Bases de données</span>
-                    <span class="tag" data-proj="immohab,opportunity">REST API</span>
+                    <span class="tag" data-proj="opportunity">REST API</span>
+                    <span class="tag" data-proj="immohab">Tests automatisés</span>
                     <span class="tag hi" data-proj="fraud,agro,immohab,opportunity">DevOps</span>
                     <span class="tag hi" data-proj="immohab,pharmacie,opportunity">Software Engineering</span>
                     <span class="tag" data-proj="agro,opportunity">Streamlit</span>
@@ -1447,16 +1448,16 @@
                         <h3 class="p-title">ImmoHab · Gestion locative</h3>
                         <p class="p-desc">
                             Loyers suivis au cahier, quittances perdues, litiges sans trace commune. Plateforme locative
-                            à rôles séparés et historique partagé : <strong>34 tests automatisés</strong>, CI/CD,
-                            déployée.
+                            à trois espaces cloisonnés, réécrite pour rendre l'accès non autorisé impossible par
+                            construction : <strong>plus de 330 tests</strong> sur trois niveaux, déployée.
                         </p>
                         <div class="p-tech">
-                            <span>Next.js 16</span><span>TypeScript</span><span>Prisma</span>
-                            <span>PostgreSQL</span><span>Docker</span>
+                            <span>Next.js</span><span>TypeScript</span><span>Prisma</span>
+                            <span>PostgreSQL</span><span>Playwright</span>
                         </div>
                         <div class="p-links">
-                            <a href="https://immohab-production.up.railway.app" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
-                            <a href="https://github.com/pa-malick/Immohab" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://immohab.vercel.app/" target="_blank" class="p-link live"><i class="fas fa-external-link-alt"></i> Démo live</a>
+                            <a href="https://github.com/pa-malick/Immohab_fullstack" target="_blank" class="p-link gh"><i class="fab fa-github"></i> GitHub</a>
                             <button type="button" class="p-link more" data-story="immohab"><i class="fas fa-circle-info"></i> Le projet en détail</button>
                         </div>
                     </div>
@@ -2223,19 +2224,19 @@ const PROJECT_STORIES = {
   immohab: {
     icon: '🏠', badge: 'Web · Full-stack', badgeClass: 'web',
     title: 'ImmoHab · Gestion locative',
-    who: 'Pour les <b>propriétaires, agences immobilières et locataires</b>.',
+    who: 'Pour les <b>propriétaires, agences immobilières et locataires</b>, à Dakar.',
     problem: "La gestion locative se fait encore au cahier et sur WhatsApp : quittances perdues, loyers en retard qu'on ne suit plus, et surtout aucune trace commune le jour où propriétaire et locataire ne sont pas d'accord. Le litige se règle alors à la parole contre la parole.",
-    solution: "Une plateforme full-stack avec des <b>rôles séparés</b> (administrateur, propriétaire, locataire), une authentification JWT et un historique consultable par chacun depuis son espace. Livrée avec intégration continue, conteneurisation et une suite de tests automatisés.",
+    solution: "Une plateforme full-stack à <b>trois espaces</b> : un catalogue public filtrable par quartier, type et budget ; un espace propriétaire pour le parc, les contrats, les échéanciers et les encaissements ; un espace locataire pour son bail, ses loyers et ses signalements. La version 1 corrigeait les accès non autorisés route par route ; cette version les rend <b>impossibles par construction</b>, chaque écriture passant par une Server Action validée et contrôlée en un seul endroit.",
     results: [
-      "<b>34 tests automatisés</b>, dont des tests de sécurité sur le cloisonnement des rôles.",
-      "Chaîne CI/CD complète et déploiement conteneurisé sur Railway.",
-      "Application en ligne, testable immédiatement."
+      "<b>Plus de 330 tests</b> sur trois niveaux : unitaire, intégration sur vraie base, et plus de 75 parcours bout en bout dans un navigateur.",
+      "Priorité donnée aux tests d'autorisation : une ressource qui appartient à quelqu'un d'autre répond exactement comme une ressource inexistante.",
+      "En ligne sur Vercel, base PostgreSQL Neon, migrations appliquées avant que la nouvelle version ne reçoive du trafic."
     ],
     usage: "Une agence y suit son parc, ses encaissements et ses relances ; le locataire retrouve ses quittances sans avoir à les réclamer. La trace écrite devient partagée, donc opposable.",
-    stack: ['Next.js 16', 'TypeScript', 'Prisma', 'PostgreSQL', 'Docker', 'CI/CD'],
+    stack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Zod', 'Playwright'],
     links: [
-      { href: 'https://immohab-production.up.railway.app', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
-      { href: 'https://github.com/pa-malick/Immohab', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
+      { href: 'https://immohab.vercel.app/', cls: 'live', icon: 'fas fa-external-link-alt', label: 'Démo live' },
+      { href: 'https://github.com/pa-malick/Immohab_fullstack', cls: 'gh', icon: 'fab fa-github', label: 'GitHub' }
     ]
   },
 
